@@ -1,85 +1,39 @@
-# crewai-blog-generator
-import os
-import streamlit as st
-from crewai import Agent, Task, Crew
+# Personal Portfolio Website
 
-# ✅ Set your OpenAI API Key directly here
-os.environ["OPENAI_API_KEY"] = "sk-xxxxx..."  # 🔐 Replace with your actual key
-os.environ["OPENAI_MODEL_NAME"] = "gpt-3.5-turbo"
+Welcome to my personal portfolio website — a showcase of my work, skills, and journey in tech.  
+Built with **pure HTML & CSS**, and deployed on **Vercel**.
 
-# Streamlit UI setup
-st.set_page_config(page_title="CrewAI Blog Generator", layout="centered")
-st.title("🧠 Multi-Agent Blog Creator with CrewAI")
-st.markdown("Generate a complete blog article using multi-agent LLMs.")
+### 🔗 Live Demo
 
-# User input for topic
-topic = st.text_input("Enter a blog topic", "Artificial Intelligence")
+👉 [Click to view the website](https://portfolio-website-livid-sigma-70.vercel.app/)
 
-if st.button("Generate Blog"):
-    if not topic.strip():
-        st.error("Please enter a valid topic.")
-    else:
-        # Define agents
-        planner = Agent(
-            role="Content Planner",
-            goal=f"Plan engaging and factually accurate content on {topic}",
-            backstory="You're responsible for gathering insights and structuring content on the topic.",
-            allow_delegation=False,
-            verbose=True
-        )
+---
 
-        writer = Agent(
-            role="Content Writer",
-            goal=f"Write an insightful opinion piece about {topic}",
-            backstory="You use the planner’s outline to craft a compelling article.",
-            allow_delegation=False,
-            verbose=True
-        )
+## 🧩 Features
 
-        editor = Agent(
-            role="Editor",
-            goal="Edit the blog to ensure it’s clear, professional, and aligned with tone guidelines.",
-            backstory="You make sure the article is grammatically correct and styled for publication.",
-            allow_delegation=False,
-            verbose=True
-        )
+- 🌐 **Single Page Application** with smooth navigation
+- 🧭 **Sticky Navigation Bar** with smooth scrolling to each section
+- 🌗 **Dark / Light Mode Toggle** for better user experience
+- 📱 **Responsive Design** – works well on different screen sizes
+- 🧑‍💼 **About Me** section with profile image
+- 🎓 **Education Section** outlining my academic background
+- 🧠 **Skills Section** showcasing my technical expertise
+  - divided into:
+  - 🔧 **Technical Skills** (e.g., languages, tools, technologies)
+  - 💬 **Soft Skills** (e.g., communication, teamwork, adaptability)
+- 🧪 **Projects Section** with descriptions of selected works
+- 📜 **Certifications Section**
+  - Hover to reveal certification images!
+- 💼 **Internships Section** highlighting hands-on industry experience
+- 📫 **Contact Section** with direct communication info
 
-        # Define tasks
-        plan_task = Task(
-            description=(
-                f"Create a detailed content plan about '{topic}' including current trends, key points, "
-                "SEO keywords, and target audience analysis."
-            ),
-            expected_output="A comprehensive content plan with an outline and insights.",
-            agent=planner,
-        )
+---
 
-        write_task = Task(
-            description=(
-                f"Write a full blog post using the plan about '{topic}'. Include intro, body, and conclusion. "
-                "Incorporate SEO naturally and keep it engaging."
-            ),
-            expected_output="A complete markdown-formatted blog article.",
-            agent=writer,
-        )
+## 🚀 Tech Stack
 
-        edit_task = Task(
-            description="Proofread and refine the blog post to ensure clarity, flow, and correct grammar.",
-            expected_output="A finalized blog article in markdown, ready for publishing.",
-            agent=editor,
-        )
+- **Frontend**: HTML, CSS , JavaScript
+- **Version Control**: Git, GitHub
+- **Deployment**: Vercel
 
-        # Run the multi-agent crew
-        crew = Crew(
-            agents=[planner, writer, editor],
-            tasks=[plan_task, write_task, edit_task],
-            verbose=True
-        )
+---
 
-        try:
-            with st.spinner("🤖 Agents are working..."):
-                result = crew.kickoff(inputs={"topic": topic})
-            st.success("✅ Blog generated successfully!")
-            st.markdown(result)
-        except Exception as e:
-            st.error(f"An error occurred: {e}")
