@@ -1,4 +1,4 @@
-Multi-Agent Blog Creator with CrewAI
+##Multi-Agent Blog Creator with CrewAI##
 This project is a Streamlit-based application that uses the CrewAI multi-agent framework powered by OpenAI GPT models to automatically generate, write, and edit a blog post based on a given topic.
 
 🚀 Features
