@@ -1,39 +1,38 @@
-# Personal Portfolio Website
+Multi-Agent Blog Creator with CrewAI
+This project is a Streamlit-based application that uses the CrewAI multi-agent framework powered by OpenAI GPT models to automatically generate, write, and edit a blog post based on a given topic.
 
-Welcome to my personal portfolio website — a showcase of my work, skills, and journey in tech.  
-Built with **pure HTML & CSS**, and deployed on **Vercel**.
+🚀 Features
+Accepts a blog topic from the user.
 
-### 🔗 Live Demo
+Uses three AI agents:
 
-👉 [Click to view the website](https://portfolio-website-livid-sigma-70.vercel.app/)
+Planner: Researches and outlines the content.
 
----
+Writer: Composes the full article based on the plan.
 
-## 🧩 Features
+Editor: Proofreads and finalizes the blog post.
 
-- 🌐 **Single Page Application** with smooth navigation
-- 🧭 **Sticky Navigation Bar** with smooth scrolling to each section
-- 🌗 **Dark / Light Mode Toggle** for better user experience
-- 📱 **Responsive Design** – works well on different screen sizes
-- 🧑‍💼 **About Me** section with profile image
-- 🎓 **Education Section** outlining my academic background
-- 🧠 **Skills Section** showcasing my technical expertise
-  - divided into:
-  - 🔧 **Technical Skills** (e.g., languages, tools, technologies)
-  - 💬 **Soft Skills** (e.g., communication, teamwork, adaptability)
-- 🧪 **Projects Section** with descriptions of selected works
-- 📜 **Certifications Section**
-  - Hover to reveal certification images!
-- 💼 **Internships Section** highlighting hands-on industry experience
-- 📫 **Contact Section** with direct communication info
+Entire blog is generated in a single click with collaboration between agents.
 
----
+Returns a complete Markdown-formatted blog.
 
-## 🚀 Tech Stack
+🧩 Project Structure
+app.py
+This is the main Streamlit app file. It does the following:
 
-- **Frontend**: HTML, CSS , JavaScript
-- **Version Control**: Git, GitHub
-- **Deployment**: Vercel
+Takes user input for the blog topic.
 
----
+Initializes CrewAI agents with defined roles:
+
+Content Planner
+
+Content Writer
+
+Editor
+
+Defines tasks for each agent based on their roles.
+
+Runs the Crew using the Crew.kickoff() method.
+
+Displays the final generated blog post using Streamlit.
 
