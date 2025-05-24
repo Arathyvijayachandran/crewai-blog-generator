@@ -17,7 +17,7 @@ Entire blog is generated in a single click with collaboration between agents.
 Returns a complete Markdown-formatted blog.
 
 # 🧩 Project Structure
-app.py
+blog.py
 This is the main Streamlit app file. It does the following:
 
 Takes user input for the blog topic.
